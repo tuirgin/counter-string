@@ -1,0 +1,89 @@
+#+TITLE: Counter-String: Self-Describing Strings
+#+OPTIONS: ^:nil num:nil toc:nil
+
+Counter strings are self-documenting strings consisting of character
+position references and markers. Each numeric character position
+reference indicates the string length at the following marker. The
+primary application for counter strings is in testing input to text
+fields. Given the nature of counter strings it is immediately apparent
+when and where truncation has occurred on a string.
+
+Take, for example, this 64-character counter string:
+
+#+begin_src racket
+  "*3*5*7*10*13*16*19*22*25*28*31*34*37*40*43*46*49*52*55*58*61*64*"
+#+end_src
+
+If it had been truncated at 32 characters, it would appear like this:
+
+#+begin_src racket
+  "*3*5*7*10*13*16*19*22*25*28*31*3"
+#+end_src
+
+#+begin_note
+James Bach describes counter strings and offeres his PerlClip program on his
+blog: [[http://www.satisfice.com/blog/archives/22][Counterstrings: Self-Describing Test Data]]. PerlClip is still available as
+both a Perl script and a compiled Windows executable, but it is not suitable for
+command line usage where the use of standard output is expected.
+#+end_note
+
+* Library
+
+#+begin_src racket
+  (require counter-string) package: counter-string
+#+end_src
+
+#+begin_src racket
+  (counter-string [length #:mark marker]) -> string?
+    length : exact-positive-integer? = 256
+    marker : non-empty-string? = "*"
+#+end_src
+
+Returns a counter string of `length` characters, where character
+position indicators are separated with `marker`.
+
+Examples:
+
+#+begin_src racket
+  > (substring (counter-string) 230)
+  "2*236*240*244*248*252*256*"
+  > (counter-string 30)
+  "*3*5*7*9*12*15*18*21*24*27*30*"
+  > (substring (counter-string #:mark "^") 0 30)
+  "^3^5^7^9^12^15^18^21^24^27^30^"
+#+end_src
+
+A multi-character `marker` is supported. The position indicated is that
+of the final character within the marker string.
+
+#+begin_src racket
+  ; Just... no. But go ahead if you must.
+  > (counter-string 24 #:mark "<(ಠ_ಠ)>")
+  "<<<<<<15<(ಠ_ಠ)>24<(ಠ_ಠ)>"
+#+end_src
+
+
+
+* Command Line Tool
+
+The command line tool, ~counter-string.rkt~, is found in the collection’s
+~bin~ directory and is simply a wrapper around the ~counter-string~
+function.
+
+#+begin_example
+  counter-string [ <option> ... ] [<length>]
+  
+   where <length> is a positive integer : Default: 256.
+   where <option> is one of
+    --marker <marker>, -m <marker> : Default: *
+      Specify the marker character.
+    --help, -h : Show this help
+    -- : Do not treat any remaining argument as a switch (at this level)
+   Multiple single-letter switches can be combined after one `-'; for
+    example: `-h-' is the same as `-h --'
+ 
+   Creates a <length> characters long counter string. Each integer
+   indicates the character position of the following <marker>.
+
+   Ex. 24 character counter-string: *3*5*7*9*12*15*18*21*24*
+#+end_example

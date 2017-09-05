@@ -39,8 +39,8 @@ command line usage where the use of standard output is expected.
     marker : non-empty-string? = "*"
 #+end_src
 
-Returns a counter string of `length` characters, where character
-position indicators are separated with `marker`.
+Returns a counter string of ~length~ characters, where character
+position indicators are separated with ~marker~.
 
 Examples:
 
@@ -53,7 +53,7 @@ Examples:
   "^3^5^7^9^12^15^18^21^24^27^30^"
 #+end_src
 
-A multi-character `marker` is supported. The position indicated is that
+A multi-character ~marker~ is supported. The position indicated is that
 of the final character within the marker string.
 
 #+begin_src racket
@@ -80,7 +80,7 @@ function.
     --help, -h : Show this help
     -- : Do not treat any remaining argument as a switch (at this level)
    Multiple single-letter switches can be combined after one `-'; for
-    example: `-h-' is the same as `-h --'
+    example: ~-h-' is the same as ~-h --'
  
    Creates a <length> characters long counter string. Each integer
    indicates the character position of the following <marker>.

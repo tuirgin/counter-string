@@ -35,7 +35,7 @@ If it had been truncated at 32 characters, it would appear like this:
                          [#:mark marker non-empty-string? "*"])
          string?]{
  Returns a counter string of @racket[length] characters,
- where character position indicators are separated with @racket[marker].}
+ where character position indicators are terminated by @racket[marker].}
 
 @(define counter-string-evaluator
    (parameterize ([sandbox-output 'string]

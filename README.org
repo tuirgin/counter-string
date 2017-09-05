@@ -33,7 +33,7 @@ If it had been truncated at 32 characters, it would appear like this:
 #+end_src
 
 Returns a counter string of ~length~ characters, where character
-position indicators are separated with ~marker~.
+position indicators are terminated by ~marker~.
 
 Examples:
 

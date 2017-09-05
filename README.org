@@ -20,13 +20,6 @@ If it had been truncated at 32 characters, it would appear like this:
   "*3*5*7*10*13*16*19*22*25*28*31*3"
 #+end_src
 
-#+begin_note
-James Bach describes counter strings and offeres his PerlClip program on his
-blog: [[http://www.satisfice.com/blog/archives/22][Counterstrings: Self-Describing Test Data]]. PerlClip is still available as
-both a Perl script and a compiled Windows executable, but it is not suitable for
-command line usage where the use of standard output is expected.
-#+end_note
-
 * Library
 
 #+begin_src racket
@@ -62,8 +55,6 @@ of the final character within the marker string.
   "<<<<<<15<(ಠ_ಠ)>24<(ಠ_ಠ)>"
 #+end_src
 
-
-
 * Command Line Tool
 
 The command line tool, ~counter-string.rkt~, is found in the collection’s
@@ -87,3 +78,10 @@ function.
 
    Ex. 24 character counter-string: *3*5*7*9*12*15*18*21*24*
 #+end_example
+
+* Credit
+
+James Bach describes counter strings and offeres his PerlClip program on his
+blog: [[http://www.satisfice.com/blog/archives/22][Counterstrings: Self-Describing Test Data]]. PerlClip is still available as
+both a Perl script and a compiled Windows executable, but it is not suitable for
+command line usage where the use of standard output is expected.

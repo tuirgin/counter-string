@@ -79,6 +79,34 @@ function.
    Ex. 24 character counter-string: *3*5*7*9*12*15*18*21*24*
 #+end_example
 
+* A really dumb GUI
+
+For the sake of those with CLI allergies, I threw together a GUI
+~counter-string-gui.rkt~. It is found in the collection's ~bin~ directory.
+
+* Compiling
+
+If you have Racket installed, building executables is very easy. Here's how I
+built executables for my Windows using co-workers:
+
+#+begin_example sh
+  $ cd bin
+  $ raco exe counter-string.rkt
+  $ raco exe counter-string-gui.rkt
+  $ raco distribute build counter-string.exe counter-string-gui.exe
+  $ tree -L 1 build
+  build
+  ├── counter-string.exe
+  ├── counter-string-gui.exe
+  └── lib
+
+  1 directory, 2 files
+#+end_example
+
+Move the ~build~ directory wherever you want it, rename it to ~counter-string~,
+and add it to ~%PATH%~. Note, also, that you could build it to whatever
+executable names you like. See the ~-o~ argument for ~raco~.
+
 * Credit
 
 James Bach describes counter strings and offeres his PerlClip program on his

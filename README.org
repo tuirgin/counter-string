@@ -81,7 +81,7 @@ function.
 
 * A really dumb GUI
 
-For the sake of those with CLI allergies, I threw together a GUI
+For the sake of those with CLI allergies, I threw together a GUI:
 ~counter-string-gui.rkt~. It is found in the collection's ~bin~ directory.
 
 * Compiling

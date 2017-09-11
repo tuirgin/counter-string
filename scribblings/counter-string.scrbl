@@ -77,3 +77,8 @@ function.
 
            Ex. 24 character counter-string: *3*5*7*9*12*15*18*21*24*
            }|
+
+@section{A really dumb GUI}
+
+For the sake of those with CLI allergies, I threw together a GUI:
+@tt{counter-string-gui.rkt}. It is found in the collection's @tt{bin} directory.

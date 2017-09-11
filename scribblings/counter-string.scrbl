@@ -43,9 +43,10 @@ If it had been truncated at 32 characters, it would appear like this:
      (make-evaluator 'racket '(require counter-string))))
 
 @examples[#:eval counter-string-evaluator
-          (substring (counter-string) 230)
+          (counter-string)
           (counter-string 30)
-          (substring (counter-string #:mark "^") 0 30)]
+          (counter-string #:mark "^")
+          (counter-string 30 #:mark "_")]
 
 A multi-character @racket[marker] is supported. The position indicated is that
 of the final character within the marker string.
